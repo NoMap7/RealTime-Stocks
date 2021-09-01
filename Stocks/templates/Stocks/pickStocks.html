@@ -1,0 +1,17 @@
+{% extends 'Stocks/base.html' %} 
+{% block content %}
+<form action="{% url 'tracker' %}" method="GET">
+{% comment %} {% csrf_token %} {% endcomment %}
+  <div class="form-group">
+    <label for="pickStocks">Pick your favourite stocks</label>
+    <select multiple class="form-control" id="pickStocks" name="pickStocks">
+      <option selected>Select</option>
+      {% for stock in stocks %}
+        <option value="{{ stock }}">{{ stock }}</option>
+      {% endfor %}
+    </select>
+    <span class="form-text text-muted">Ctrl+select to pick multiple stocks</span>
+  </div>
+  <input type="submit" value="Track" class="btn btn-dark">
+</form>
+{% endblock content %}
